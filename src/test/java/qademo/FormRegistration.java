@@ -2,12 +2,18 @@ package qademo;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.selector.ByText;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class FormRegistration {
+    String picture = "C:\\Users\\shpak-ma\\IdeaProjects\\qa_guru\\qademo-tests-14\\src\\test\\resources\\Scrooge.png";
     @BeforeAll
     public static void configuration() {
         Configuration.baseUrl = "https://demoqa.com";
@@ -28,6 +34,18 @@ public class FormRegistration {
         $(".react-datepicker__month-select").selectOptionByValue("5");
         $(".react-datepicker__day--006").click();
         $("#subjectsInput").setValue("History").pressEnter();
+        $("[for = hobbies-checkbox-1]").click();
+        $("#uploadPicture").uploadFile(new File(picture));
+        $("[placeholder='Current Address']").setValue("Puchkin street");
+        $(".css-1wa3eu0-placeholder").click();
+        $(byText("Haryana")).click();
+        $("#city").click();
+        $(byText("Panipat")).click();
+        $("[type = 'submit']").click();
+
+        $(".table-responsive [text = 'Student Name']").shouldHave(text("Alexander Pushkin"));
+
+
         sleep(5000);
 
     }
