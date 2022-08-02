@@ -10,10 +10,12 @@ import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 
 public class FormRegistration {
     String picture = "C:\\Users\\shpak-ma\\IdeaProjects\\qa_guru\\qademo-tests-14\\src\\test\\resources\\Scrooge.png";
+
     @BeforeAll
     public static void configuration() {
         Configuration.baseUrl = "https://demoqa.com";
@@ -43,10 +45,11 @@ public class FormRegistration {
         $(byText("Panipat")).click();
         $("[type = 'submit']").click();
 
-        $(".table-responsive [text = 'Student Name']").shouldHave(text("Alexander Pushkin"));
 
-
-        sleep(5000);
+        SelenideElement modalBody = $(".modal-body");
+        modalBody.shouldHave(text("Alexander Pushkin"), text("Pushkin@mail.ru"),
+                text("Male"), text("9125986312"), text("06 June,1997"), text("History"),
+                text("Sports"), text("Scrooge.png"), text("Puchkin street"), text("Haryana Panipat"));
 
     }
 
