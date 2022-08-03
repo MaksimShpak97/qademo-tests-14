@@ -14,7 +14,7 @@ import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 
 public class FormRegistration {
-    String picture = "C:\\Users\\shpak-ma\\IdeaProjects\\qa_guru\\qademo-tests-14\\src\\test\\resources\\Scrooge.png";
+    String picture = "src\\test\\resources\\Scrooge.png";
 
     @BeforeAll
     public static void configuration() {
