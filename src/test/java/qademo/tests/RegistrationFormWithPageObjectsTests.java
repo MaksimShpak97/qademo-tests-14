@@ -4,16 +4,10 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import qademo.pages.RegistrationFormPage;
+import qademo.pages.components.BaseTest;
 
-public class RegistrationFormWithPageObjectsTests {
+public class RegistrationFormWithPageObjectsTests extends BaseTest {
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
-
-    @BeforeAll
-    public static void configuration() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browser = "chrome";
-        Configuration.browserSize = "1920x1080";
-    }
 
     @Test
     void fillFormTests() {
