@@ -13,43 +13,36 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class RegistrationFormPage {
-
-    private static final String TITLE_TEXT = "Student Registration Form";
     CalendarComponent calendarComponent = new CalendarComponent();
     ResultModal resultModal = new ResultModal();
-    private SelenideElement
-            firstNameInput = $("#firstName"),
-            lastNameInput = $("#lastName"),
-            emailInput = $("#userEmail");
-
 
     public RegistrationFormPage openPage() {
         open("/automation-practice-form");
-        $(byTagAndText("h5", TITLE_TEXT)).shouldHave(text(TITLE_TEXT));
+        $(byTagAndText("h5", TestDate.getTitle_registration())).shouldHave(text(TestDate.getTitle_registration()));
 
         return this;
     }
 
     public RegistrationFormPage setFirstName(String value) {
-        firstNameInput.setValue(value);
+        $("#firstName").setValue(value);
 
         return this;
     }
 
     public RegistrationFormPage clearFirstName() {
-        firstNameInput.clear();
+        $("#firstName").clear();
 
         return this;
     }
 
     public RegistrationFormPage setLastName(String value) {
-        lastNameInput.setValue(value);
+        $("#lastName").setValue(value);
 
         return this;
     }
 
     public RegistrationFormPage setEmail(String value) {
-        emailInput.setValue(value);
+        $("#userEmail").setValue(value);
 
         return this;
     }
@@ -66,9 +59,24 @@ public class RegistrationFormPage {
         return this;
     }
 
-    public RegistrationFormPage setBirthDate(String day, String month, String year) {
+
+    public RegistrationFormPage setBirthYear(String year) {
         $("#dateOfBirthInput").click();
-        calendarComponent.setDate(day, month, year);
+        calendarComponent.setYear(year);
+
+        return this;
+    }
+
+    public RegistrationFormPage setBirthMonth(String month) {
+        $("#dateOfBirthInput").click();
+        calendarComponent.setMonth(month);
+
+        return this;
+    }
+
+    public RegistrationFormPage setBirthDay(String day) {
+        $("#dateOfBirthInput").click();
+        calendarComponent.setDay(day);
 
         return this;
     }
@@ -129,5 +137,40 @@ public class RegistrationFormPage {
         resultModal.checkResult(key, value);
 
         return this;
+    }
+
+    public RegistrationFormPage inputTestdate() {
+        setFirstName(TestDate.getFirstName())
+                .setLastName(TestDate.getLastName())
+                .setEmail(TestDate.getEmail())
+                .setGender(TestDate.getGender())
+                .setNumber(TestDate.getPhoneNumber())
+                .setBirthYear(TestDate.getYear())
+                .setBirthMonth(TestDate.getMonth())
+                .setBirthDay(TestDate.getDay())
+                .setSubject(TestDate.getSubject())
+                .setHobbies(TestDate.getHobbies_number())
+                .addPicture(TestDate.getPicture_path())
+                .setAddress(TestDate.getAddress())
+                .selectState(TestDate.getState())
+                .selectCity(TestDate.getCity())
+                .submit();
+
+        return this;
+
+    }
+
+    public void testCheckResultOnTableMethods() {
+        cheсkResult("Student Name", TestDate.getFirstName() + " " + TestDate.getLastName())
+                .cheсkResult("Student Email", TestDate.getEmail())
+                .cheсkResult("Gender", TestDate.getGender())
+                .cheсkResult("Mobile", TestDate.getPhoneNumber())
+                .cheсkResult("Date of Birth", TestDate.getBirthDate())
+                .cheсkResult("Subjects", TestDate.getSubject())
+                .cheсkResult("Hobbies", TestDate.getHobbies())
+                .cheсkResult("Picture", TestDate.getPicture_name())
+                .cheсkResult("Address", TestDate.getAddress())
+                .cheсkResult("State and City", TestDate.getState() + " " + TestDate.getCity());
+
     }
 }
