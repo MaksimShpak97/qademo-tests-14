@@ -1,6 +1,5 @@
 package qademo.pages;
 
-import com.codeborne.selenide.SelenideElement;
 import qademo.pages.components.CalendarComponent;
 import qademo.pages.components.ResultModal;
 
@@ -15,10 +14,11 @@ import static com.codeborne.selenide.Selenide.open;
 public class RegistrationFormPage {
     CalendarComponent calendarComponent = new CalendarComponent();
     ResultModal resultModal = new ResultModal();
+    TestData testData = new TestData();
 
     public RegistrationFormPage openPage() {
         open("/automation-practice-form");
-        $(byTagAndText("h5", TestDate.getTitle_registration())).shouldHave(text(TestDate.getTitle_registration()));
+        $(byTagAndText("h5", testData.getTitle_registration())).shouldHave(text(testData.getTitle_registration()));
 
         return this;
     }
@@ -139,38 +139,38 @@ public class RegistrationFormPage {
         return this;
     }
 
-    public RegistrationFormPage inputTestdate() {
-        setFirstName(TestDate.getFirstName())
-                .setLastName(TestDate.getLastName())
-                .setEmail(TestDate.getEmail())
-                .setGender(TestDate.getGender())
-                .setNumber(TestDate.getPhoneNumber())
-                .setBirthYear(TestDate.getYear())
-                .setBirthMonth(TestDate.getMonth())
-                .setBirthDay(TestDate.getDay())
-                .setSubject(TestDate.getSubject())
-                .setHobbies(TestDate.getHobbies_number())
-                .addPicture(TestDate.getPicture_path())
-                .setAddress(TestDate.getAddress())
-                .selectState(TestDate.getState())
-                .selectCity(TestDate.getCity())
+    public RegistrationFormPage inputTestDate(TestData testData) {
+        setFirstName(testData.getFirstName())
+                .setLastName(testData.getLastName())
+                .setEmail(testData.getEmail())
+                .setGender(testData.getGender())
+                .setNumber(testData.getPhoneNumber())
+                .setBirthYear(testData.getYear())
+                .setBirthMonth(testData.getMonth())
+                .setBirthDay(testData.getDay())
+                .setSubject(testData.getSubject())
+                .setHobbies(testData.getHobbies_number())
+                .addPicture(testData.getPicture_path())
+                .setAddress(testData.getAddress())
+                .selectState(testData.getState())
+                .selectCity(testData.getCity())
                 .submit();
 
         return this;
 
     }
 
-    public void testCheckResultOnTableMethods() {
-        cheсkResult("Student Name", TestDate.getFirstName() + " " + TestDate.getLastName())
-                .cheсkResult("Student Email", TestDate.getEmail())
-                .cheсkResult("Gender", TestDate.getGender())
-                .cheсkResult("Mobile", TestDate.getPhoneNumber())
-                .cheсkResult("Date of Birth", TestDate.getBirthDate())
-                .cheсkResult("Subjects", TestDate.getSubject())
-                .cheсkResult("Hobbies", TestDate.getHobbies())
-                .cheсkResult("Picture", TestDate.getPicture_name())
-                .cheсkResult("Address", TestDate.getAddress())
-                .cheсkResult("State and City", TestDate.getState() + " " + TestDate.getCity());
+    public void testCheckResultOnTableMethods(TestData testData) {
+        cheсkResult("Student Name", testData.getFirstName() + " " + testData.getLastName())
+                .cheсkResult("Student Email", testData.getEmail())
+                .cheсkResult("Gender", testData.getGender())
+                .cheсkResult("Mobile", testData.getPhoneNumber())
+                .cheсkResult("Date of Birth", testData.getBirthDate())
+                .cheсkResult("Subjects", testData.getSubject())
+                .cheсkResult("Hobbies", testData.getHobbies())
+                .cheсkResult("Picture", testData.getPicture_name())
+                .cheсkResult("Address", testData.getAddress())
+                .cheсkResult("State and City", testData.getState() + " " + testData.getCity());
 
     }
 }

@@ -1,6 +1,6 @@
 package qademo.pages.components;
 
-import qademo.pages.TestDate;
+import qademo.pages.TestData;
 
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
@@ -8,10 +8,11 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ResultModal {
+    TestData testData = new TestData();
 
     public ResultModal checkVisible() {
         $("div.modal-content").should(appear);
-        $("div.modal-header").$(byText(TestDate.getTitle_thanks())).shouldHave(text(TestDate.getTitle_thanks()));
+        $("div.modal-header").$(byText(testData.getTitle_thanks())).shouldHave(text(testData.getTitle_thanks()));
 
         return this;
     }
