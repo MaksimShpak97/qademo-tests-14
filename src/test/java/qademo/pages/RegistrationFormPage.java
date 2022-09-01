@@ -17,12 +17,7 @@ public class RegistrationFormPage {
     CalendarComponent calendarComponent = new CalendarComponent();
     ResultModal resultModal = new ResultModal();
     TestData testData = new TestData();
-//    @Feature("User registration test")
-//    @Story("filling out the registration form")
-//    @Owner("ShpakMa")
-//    @Severity(SeverityLevel.CRITICAL)
-//    @Link(value = "Testing", url = "https://testing.github.com")
-//    @DisplayName("Create Issue for authorized user")
+
     public RegistrationFormPage openPage() {
         open("/automation-practice-form");
         $(byTagAndText("h5", testData.getTitleRegistration())).shouldHave(text(testData.getTitleRegistration()));
@@ -133,7 +128,6 @@ public class RegistrationFormPage {
 
         return this;
     }
-
     public RegistrationFormPage checkResultTableVisible() {
         resultModal.checkVisible();
 
@@ -146,7 +140,6 @@ public class RegistrationFormPage {
         return this;
     }
 
-    @Step ("")
     public RegistrationFormPage inputTestDate(TestData testData) {
         setFirstName(testData.getFirstName())
                 .setLastName(testData.getLastName())
@@ -167,6 +160,7 @@ public class RegistrationFormPage {
         return this;
 
     }
+    @DisplayName("Checking the completion of the results")
 
     public void testCheckResultOnTableMethods(TestData testData) {
         cheсkResult("Student Name", testData.getFirstName() + " " + testData.getLastName())
