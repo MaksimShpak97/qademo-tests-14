@@ -1,17 +1,14 @@
 package qademo.pages;
 
-import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import qademo.pages.components.CalendarComponent;
 import qademo.pages.components.ResultModal;
 
-import java.io.File;
-
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byTagAndText;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationFormPage {
     CalendarComponent calendarComponent = new CalendarComponent();
@@ -96,7 +93,7 @@ public class RegistrationFormPage {
     }
 
     public RegistrationFormPage addPicture(String value) {
-        $("#uploadPicture").uploadFile(new File(value));
+        $("#uploadPicture").uploadFromClasspath(value);
 
         return this;
     }
@@ -138,6 +135,10 @@ public class RegistrationFormPage {
         resultModal.checkResult(key, value);
 
         return this;
+    }
+    public void removeBanner() {
+        executeJavaScript("$('footer').remove()");
+        executeJavaScript("$('#fixedban').remove()");
     }
 
     public RegistrationFormPage inputTestDate(TestData testData) {

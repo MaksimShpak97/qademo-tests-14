@@ -14,7 +14,6 @@ public class RegistrationFormWithPageObjectsTests extends BaseTest {
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
     TestData testData = new TestData();
 
-
     @Feature("Registration test")
     @Owner("ShpakMa")
     @Severity(SeverityLevel.CRITICAL)
@@ -23,7 +22,7 @@ public class RegistrationFormWithPageObjectsTests extends BaseTest {
     @Test
     void fillFormTests() {
         step("Open registration page", ()-> {
-            registrationFormPage.openPage();
+            registrationFormPage.openPage().removeBanner();
         });
         step( "Filling out the registration form", ()-> {
             registrationFormPage.inputTestDate(testData);

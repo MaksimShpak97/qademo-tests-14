@@ -9,7 +9,6 @@ import static qademo.utils.RandomUtils.*;
 public class TestData {
     static Faker faker = new Faker(new Locale("en-US"));
 
-
     private final String firstName = faker.name().firstName();
     private final String lastName = faker.name().lastName();
     private final String email = faker.internet().emailAddress();
@@ -22,7 +21,7 @@ public class TestData {
     private final String subject = "History";
     private final String hobbies = "Reading";
     private final String hobbies_number = "2";
-    private final String picture_path = "src\\test\\resources\\scrooge.png";
+    private final String picture_path = "img/scrooge.png";
     private final String picture_name = "scrooge.png";
     private final String address = faker.address().fullAddress();
     private final String state = "Haryana";

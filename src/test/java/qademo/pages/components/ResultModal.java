@@ -23,5 +23,4 @@ public class ResultModal {
         return this;
 
     }
-
 }
