@@ -1,7 +1,6 @@
 package qademo.pages;
 
 import com.github.javafaker.Faker;
-import qademo.utils.RandomUtils;
 
 import java.util.Locale;
 
@@ -11,26 +10,25 @@ public class TestData {
     static Faker faker = new Faker(new Locale("en-US"));
 
 
-    private String
-            firstName = faker.name().firstName(),
-            lastName = faker.name().lastName(),
-            email = faker.internet().emailAddress(),
-            gender = "Male",
-            phoneNumber = getRandomPhoneNumber(),
-            birthDate = "06 June,1997",
-            day = "06",
-            month = "5",
-            year = "1997",
-            subject = "History",
-            hobbies = "Reading",
-            hobbies_number = "2",
-            picture_path = "src\\test\\resources\\scrooge.png",
-            picture_name = "scrooge.png",
-            address = faker.address().fullAddress(),
-            state = "Haryana",
-            city = "Panipat",
-            title_thanks = "Thanks for submitting the form",
-            title_registration = "Student Registration Form";
+    private final String firstName = faker.name().firstName();
+    private final String lastName = faker.name().lastName();
+    private final String email = faker.internet().emailAddress();
+    private final String gender = "Male";
+    private final String phoneNumber = getRandomPhoneNumber();
+    private final String birthDate = "06 June,1997";
+    private final String day = "06";
+    private final String month = "5";
+    private final String year = "1997";
+    private final String subject = "History";
+    private final String hobbies = "Reading";
+    private final String hobbies_number = "2";
+    private final String picture_path = "src\\test\\resources\\scrooge.png";
+    private final String picture_name = "scrooge.png";
+    private final String address = faker.address().fullAddress();
+    private final String state = "Haryana";
+    private final String city = "Panipat";
+    private final String titleThanks = "Thanks for submitting the form";
+    private final String titleRegistration = "Student Registration Form";
 
     public String getFirstName() {
 
@@ -114,13 +112,13 @@ public class TestData {
         return city;
     }
 
-    public String getTitle_thanks() {
-        return title_thanks;
+    public String getTitleThanks() {
+        return titleThanks;
     }
 
-    public String getTitle_registration() {
+    public String getTitleRegistration() {
 
-        return title_registration;
+        return titleRegistration;
     }
 
 

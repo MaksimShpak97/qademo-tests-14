@@ -1,5 +1,7 @@
 package qademo.pages;
 
+import io.qameta.allure.*;
+import org.junit.jupiter.api.DisplayName;
 import qademo.pages.components.CalendarComponent;
 import qademo.pages.components.ResultModal;
 
@@ -15,10 +17,15 @@ public class RegistrationFormPage {
     CalendarComponent calendarComponent = new CalendarComponent();
     ResultModal resultModal = new ResultModal();
     TestData testData = new TestData();
-
+//    @Feature("User registration test")
+//    @Story("filling out the registration form")
+//    @Owner("ShpakMa")
+//    @Severity(SeverityLevel.CRITICAL)
+//    @Link(value = "Testing", url = "https://testing.github.com")
+//    @DisplayName("Create Issue for authorized user")
     public RegistrationFormPage openPage() {
         open("/automation-practice-form");
-        $(byTagAndText("h5", testData.getTitle_registration())).shouldHave(text(testData.getTitle_registration()));
+        $(byTagAndText("h5", testData.getTitleRegistration())).shouldHave(text(testData.getTitleRegistration()));
 
         return this;
     }
@@ -139,6 +146,7 @@ public class RegistrationFormPage {
         return this;
     }
 
+    @Step ("")
     public RegistrationFormPage inputTestDate(TestData testData) {
         setFirstName(testData.getFirstName())
                 .setLastName(testData.getLastName())

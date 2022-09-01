@@ -12,7 +12,7 @@ public class ResultModal {
 
     public ResultModal checkVisible() {
         $("div.modal-content").should(appear);
-        $("div.modal-header").$(byText(testData.getTitle_thanks())).shouldHave(text(testData.getTitle_thanks()));
+        $("div.modal-header").$(byText(testData.getTitleThanks())).shouldHave(text(testData.getTitleThanks()));
 
         return this;
     }
